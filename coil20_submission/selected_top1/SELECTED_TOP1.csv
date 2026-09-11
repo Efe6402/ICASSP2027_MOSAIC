@@ -1,0 +1,2 @@
+case_id,modal_rank,profile_id,profile_name,alpha_a,alpha_c,beta_a,beta_c,tau_intra,tau_inter,eta_c,lambda_B,epsilon_intra,epsilon_inter,mean_auxiliary_validation_score,validation_score_std,selection_seed,final_seed
+global6,3,2508,G08_beta_c_010,0.003,0.0003,0.08,0.01,0.08,0.3,0.5,0.005,1e-05,1e-05,0.257773643178449,0.00658995733084667,20260811,21300811
