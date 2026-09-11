@@ -1,4 +1,3 @@
-
 # MOSAIC synthetic experiments
 
 This package contains the synthetic experiments used to evaluate MOSAIC against product graph learning (PGL) and multiplex graph learning (MXGL). Each experiment is self-contained: paths are resolved relative to its own directory, and generated data, fitted models, tables, and figures are written locally within that subpackage.

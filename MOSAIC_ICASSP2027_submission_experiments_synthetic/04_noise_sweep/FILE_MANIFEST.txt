@@ -1,0 +1,37 @@
+MOSAIC fixed-configuration VIEW-wise kappa x SNR Gaussian-noise sweep
+
+Entry points
+  RUN_FULL_NOISE_SWEEP.m          complete p=5000 experiment
+  RUN_QUICK_TEST.m                reduced end-to-end package check
+
+Noise experiment implementation
+  noise_sweep_config.m            SNR grid, kappa grid, endpoint profile, limits
+  view_variance_profile_from_kappa.m  v(kappa)=1+kappa*(v*-1)
+  prepare_noise_signal_bank.m     paired view-wise kappa x SNR observations
+  validate_noise_bank.m           pairing/profile/power/SNR endpoint checks
+  run_noise_sweep.m               frozen solver execution, scoring, outputs
+  plot_noise_results.m            kappa panels and kappa x SNR heatmaps
+  verify_noise_sweep_package.m    package and frozen-selection checks
+
+Shared evaluation (preserved)
+  fit_fixed_candidate.m
+  make_signal_record.m
+  graph_auc_metrics.m
+  apply_graph_f1_thresholds.m
+  load_default_truth.m
+  setup_noise_sweep_paths.m
+  signal_covariance_from_supra.m
+
+Embedded inputs (preserved)
+  data/source_truth/              default planted synthetic truth
+  selected_configurations/p_05000 component-F1-selected top three
+  P5000_FROZEN_CONFIGURATION_AUDIT.csv configuration/threshold audit
+
+Package-local solvers (preserved byte-for-byte)
+  solver/mosaic/
+  solver/pgl2021/
+  solver/zw2024/
+
+Generated at runtime
+  generated_data/
+  results/
