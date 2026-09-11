@@ -1,0 +1,101 @@
+stock_index,ticker,sector
+1,A,Health Care
+2,AAL,Industrials
+3,ABBV,Health Care
+4,ABC,Health Care
+5,ABMD,Health Care
+6,ABT,Health Care
+7,ADM,Consumer Staples
+8,AEE,Utilities
+9,AEP,Utilities
+10,AES,Utilities
+11,AFL,Financials
+12,AIG,Financials
+13,AIV,Real Estate
+14,AIZ,Financials
+15,AJG,Financials
+16,ALB,Materials
+17,ALGN,Health Care
+18,ALK,Industrials
+19,ALL,Financials
+20,ALLE,Industrials
+21,ALXN,Health Care
+22,AMCR,Materials
+23,AME,Industrials
+24,AMGN,Health Care
+25,AMP,Financials
+26,AMT,Real Estate
+27,ANTM,Health Care
+28,AON,Financials
+29,AOS,Industrials
+30,APA,Energy
+31,APD,Materials
+32,ARE,Real Estate
+33,ATO,Utilities
+34,AVB,Real Estate
+35,AVY,Materials
+36,AWK,Utilities
+37,AXP,Financials
+38,BA,Industrials
+39,BAC,Financials
+40,BAX,Health Care
+41,BDX,Health Care
+42,BEN,Financials
+43,BIIB,Health Care
+44,BIO,Health Care
+45,BK,Financials
+46,BKR,Energy
+47,BLK,Financials
+48,BLL,Materials
+49,BMY,Health Care
+50,BSX,Health Care
+51,BXP,Real Estate
+52,C,Financials
+53,CAG,Consumer Staples
+54,CAH,Health Care
+55,CAT,Industrials
+56,CB,Financials
+57,CBOE,Financials
+58,CBRE,Real Estate
+59,CCI,Real Estate
+60,CE,Materials
+61,CERN,Health Care
+62,CF,Materials
+63,CFG,Financials
+64,CHD,Consumer Staples
+65,CHRW,Industrials
+66,CI,Health Care
+67,CINF,Financials
+68,CL,Consumer Staples
+69,CLX,Consumer Staples
+70,CMA,Financials
+71,CME,Financials
+72,CMI,Industrials
+73,CMS,Utilities
+74,CNC,Health Care
+75,CNP,Utilities
+76,COF,Financials
+77,COG,Energy
+78,COO,Health Care
+79,COP,Energy
+80,COST,Consumer Staples
+81,COTY,Consumer Staples
+82,CPB,Consumer Staples
+83,CPRT,Industrials
+84,CSX,Industrials
+85,CTAS,Industrials
+86,CVS,Health Care
+87,CVX,Energy
+88,D,Utilities
+89,DAL,Industrials
+90,DD,Materials
+91,DE,Industrials
+92,DFS,Financials
+93,DGX,Health Care
+94,DHR,Health Care
+95,DLR,Real Estate
+96,DOV,Industrials
+97,DRE,Real Estate
+98,DTE,Utilities
+99,DUK,Utilities
+100,DVA,Health Care

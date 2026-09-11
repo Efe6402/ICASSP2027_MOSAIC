@@ -1,0 +1,2 @@
+r,auxiliary_rank,profile_id,profile_name,auxiliary_validation_score,seed,valid,status,error_message,runtime_seconds,objective,stationarity,iterations,best_restart
+3,1,124,hp59_neighbor_60,0.44117367524269,21190813,1,converged,,555.09268975,115.443643785881,2.73775442852609e-07,707,3
