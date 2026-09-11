@@ -1,0 +1,56 @@
+function cfg=density_sweep_config(mode,overrides)
+%DENSITY_SWEEP_CONFIG Exact-count nested modal-density experiment.
+if nargin<1||isempty(mode), mode='full'; end
+if nargin<2, overrides=struct(); end
+root=fileparts(mfilename('fullpath'));
+target_mode_edges=[10 9;12 11;14 13;16 15;18 17;20 19; ...
+    22 21;24 23;26 25;28 27;30 29];
+source_q_in=[.19 .19]; source_q_out=.01;
+source_odds=(source_q_in(1)/(1-source_q_in(1)))/ ...
+    (source_q_out/(1-source_q_out));
+cfg=struct('mode',char(mode),'root',root, ...
+    'source_truth',fullfile(root,'data','source_truth', ...
+        'MOSAIC_PLANTED_BLOCK_TRUTH_ONLY.mat'), ...
+    'selected_config_dir',fullfile(root,'selected_configurations','p_05000'), ...
+    'data_dir',fullfile(root,'generated_data','density_bank'), ...
+    'results_root',fullfile(root,'results','density_sweep'), ...
+    'target_mode_edges',target_mode_edges, ...
+    'source_q_in',source_q_in,'source_q_out',source_q_out, ...
+    'contrast_odds_ratio',source_odds,'fixed_copy_weights',true, ...
+    'signal_count',5000,'validation_count',10,'test_count',10, ...
+    'seed_base',13082026,'topology_seed',42,'overwrite_data',false, ...
+    'top_k',3,'verbose',true,'make_figures',true, ...
+    'mosaic_screen_restarts',2,'mosaic_refine_restarts',6, ...
+    'mosaic_screen_max_iter',3000,'mosaic_refine_max_iter',6000, ...
+    'zw_max_iter',300,'zw_tol',1e-4,'zw_backend','exact_projection');
+if strcmpi(mode,'quick')
+    cfg.target_mode_edges=cfg.target_mode_edges(1:2,:);
+    cfg.signal_count=100; cfg.validation_count=1; cfg.test_count=1;
+    cfg.top_k=1; cfg.mosaic_refine_restarts=1; cfg.mosaic_refine_max_iter=60;
+    cfg.data_dir=fullfile(root,'generated_data','quick_density_bank');
+end
+f=fieldnames(overrides); for k=1:numel(f), cfg.(f{k})=overrides.(f{k}); end
+assert(size(cfg.target_mode_edges,2)==2);
+assert(all(diff(cfg.target_mode_edges,1,1)>=0,'all'));
+possible=nchoosek(16,2); block_pairs=nchoosek(8,2);
+target_density=mean(cfg.target_mode_edges,2)/possible;
+[cfg.q_in_levels,cfg.q_out_levels]=fixed_odds_schedule( ...
+    target_density,block_pairs,possible,cfg.contrast_odds_ratio);
+cfg.q_in_levels(1,:)=cfg.source_q_in; cfg.q_out_levels(1)=cfg.source_q_out;
+stamp=char(datetime('now','Format','yyyyMMdd_HHmmss'));
+cfg.output_dir=fullfile(cfg.results_root,['run_',char(mode),'_',stamp]);
+end
+
+function [qin,qout]=fixed_odds_schedule(density,block_pairs,possible,odds_ratio)
+bg_pairs=possible-block_pairs; n=numel(density); qin=zeros(n,2); qout=zeros(n,1);
+for d=1:n
+    lo=0; hi=1-eps;
+    for it=1:80
+        qo=(lo+hi)/2; qi=odds_ratio*qo/(1-qo+odds_ratio*qo);
+        current=(block_pairs*qi+bg_pairs*qo)/possible;
+        if current<density(d), lo=qo; else, hi=qo; end
+    end
+    qo=(lo+hi)/2; qi=odds_ratio*qo/(1-qo+odds_ratio*qo);
+    qout(d)=qo; qin(d,:)=[qi qi];
+end
+end
